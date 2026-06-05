@@ -4,7 +4,7 @@ const translations = {
         nav: {
             home: "Início",
             about: "Sobre",
-            curriculum: "Trajetória",
+            curriculum: "Background",
             events: "Eventos",
             contact: "Contato"
         },
@@ -28,7 +28,7 @@ const translations = {
         },
         curriculum: {
             title: "Curriculum",
-            heading: "Trajetória",
+            heading: "Background",
             desc1: "Minha trajetória no universo cervejeiro é resultado de anos de estudo, prática e aperfeiçoamento contínuo nas áreas de análise sensorial, educação cervejeira e cultura gastronômica.",
             desc2: "Ao longo da minha carreira, desenvolvi conhecimento técnico e experiência prática por meio de formação especializada, atuação como jurado e condução de atividades educacionais e eventos.",
             ci1: "Juiz de Concursos Cervejeiros",
@@ -74,7 +74,7 @@ const translations = {
         nav: {
             home: "Home",
             about: "About",
-            curriculum: "Trajectory",
+            curriculum: "Background",
             events: "Events",
             contact: "Contact"
         },
@@ -98,7 +98,7 @@ const translations = {
         },
         curriculum: {
             title: "Curriculum",
-            heading: "Trajectory",
+            heading: "Background",
             desc1: "My journey in the beer world is the result of years of study, practice, and continuous improvement in the areas of sensory analysis, beer education, and gastronomic culture.",
             desc2: "Throughout my career, I have developed technical knowledge and hands-on experience through specialized training, work as a judge, and the organization of educational activities and events.",
             ci1: "Beer Competition Judge",
@@ -144,7 +144,7 @@ const translations = {
         nav: {
             home: "Inizio",
             about: "Chi Sono",
-            curriculum: "Traiettoria",
+            curriculum: "Background",
             events: "Eventi",
             contact: "Contatto"
         },
@@ -168,7 +168,7 @@ const translations = {
         },
         curriculum: {
             title: "Curriculum",
-            heading: "Traiettoria",
+            heading: "Background",
             desc1: "Il mio percorso nel mondo della birra è il risultato di anni di studio, pratica e miglioramento continuo nelle aree dell'analisi sensoriale, dell'educazione birraria e della cultura gastronomica.",
             desc2: "Nel corso della mia carriera, ho sviluppato conoscenze tecniche ed esperienza pratica attraverso una formazione specializzata, l'attività come giudice e la conduzione di attività educative ed eventi.",
             ci1: "Giudice di Concorsi Birrari",
@@ -176,8 +176,8 @@ const translations = {
             ci3: "Maestro degli Stili Birrari",
             ci4: "Ideatore del Corso \"Trasformare la Birra in Business\"",
             ci5: "Corso Avanzato in Tecnologia della Birra",
-            ci6: "Sommelier della Birra — Science of Beer",
-            ci7: "Sommelier della Birra — Instituto da Cerveja Brasil",
+            ci6: "Beer Sommelier — Science of Beer",
+            ci7: "Beer Sommelier — Instituto da Cerveja Brasil",
             ci8: "Homebrew"
         },
         events: {
@@ -206,7 +206,7 @@ const translations = {
             }
         },
         footer: {
-            copyright: "© 2025 Gustavo Passaia. Sommelier della Birra - Tutti i diritti riservati."
+            copyright: "© 2025 Gustavo Passaia. Beer Sommelier - Tutti i diritti riservati."
         }
     }
 };

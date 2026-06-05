@@ -280,7 +280,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    background-image: url(../imagens/sommelier_1.jpeg);
+    background-image: url(../imagens/eventos/foto_capa2.jpeg);
     background-size: cover;
     background-position: center top;
     background-attachment: fixed;
@@ -476,7 +476,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: brightness(0.4) saturate(0.7);
+    filter: brightness(0.8) saturate(0.7);
 
     /* ── OPÇÃO 1: foto completa, corpo inteiro (ativo agora) ── */
     object-position: center top;
