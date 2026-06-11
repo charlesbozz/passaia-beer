@@ -470,7 +470,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: brightness(0.8) saturate(0.7);
+    filter: brightness(0.9) saturate(0.7);
 
     /* ── OPÇÃO 1: foto completa, corpo inteiro (ativo agora) ── */
     object-position: center top;
