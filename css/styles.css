@@ -1299,7 +1299,7 @@ body {
     }
 
     .about-image img {
-        filter: brightness(0.3) saturate(0.6);
+        filter: brightness(0.7) saturate(0.8);
     }
 
     .curriculum-layout {
@@ -1585,7 +1585,7 @@ body {
 }
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.15rem;
-}
+
 
 .event-card--past:hover .event-title {
     color: rgba(255, 255, 255, 0.9);
