@@ -716,15 +716,33 @@ function initEvents() {
 
     // Expõe função de re-render para ser chamada por changeLanguage
     window.rerenderUpcomingCards = function() {
+        // Re-renderiza próximos eventos
         const grid = document.getElementById('grid-upcoming');
-        if (!grid) return;
-        const up = EVENTS_DATA.filter(e => e.status === 'upcoming');
-        if (up.length === 0) {
-            grid.innerHTML = renderComingSoonCard(currentLang);
-        } else {
-            grid.innerHTML = up.map(e => renderUpcomingCard(e, currentLang)).join('');
+        if (grid) {
+            const up = EVENTS_DATA.filter(e => e.status === 'upcoming');
+            if (up.length === 0) {
+                grid.innerHTML = renderComingSoonCard(currentLang);
+            } else {
+                grid.innerHTML = up.map(e => renderUpcomingCard(e, currentLang)).join('');
+            }
+            grid.querySelectorAll('.event-card').forEach(el => el.classList.add('visible'));
         }
-        grid.querySelectorAll('.event-card').forEach(el => el.classList.add('visible'));
+
+        // Re-renderiza edições anteriores (corrige idioma dos cards past)
+        const gridPast = document.getElementById('grid-past');
+        if (gridPast) {
+            const past = EVENTS_DATA.filter(e => e.status === 'past');
+            if (past.length > 0) {
+                gridPast.innerHTML = past.map(ev => renderPastCard(ev)).join('');
+                gridPast.querySelectorAll('.event-card').forEach((el, i) => {
+                    el.classList.add('visible');
+                    const ev = past[i];
+                    if (ev && ev.gallery && ev.gallery.length > 0) {
+                        el.addEventListener('click', () => lbOpen(ev.gallery, 0));
+                    }
+                });
+            }
+        }
     };
 
     // ── Toggle de abas ──
