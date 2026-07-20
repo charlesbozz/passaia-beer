@@ -493,8 +493,42 @@ const EVENTS_DATA = [
 
     // ── PRÓXIMOS ──────────────────────────────────────
     {
-        id: "oltre-la-birra-maio-2025",
+        id: "oltre-la-birra-luglio-2026",
         status: "upcoming",
+        title: {
+            pt: "Além da Cerveja: Cerveja & Coquetel — Do Copo ao Shaker",
+            en: "Beyond Beer: Beer & Cocktail — From Glass to Shaker",
+            it: "Oltre la Birra: Birra & Cocktail — Dal Bicchiere allo Shaker"
+        },
+        image: "./imagens/event-card/evento2.jpeg",
+        date: {
+            day: "31",
+            month: { pt: "JUL", en: "JUL", it: "LUG" }
+        },
+        dateFull: {
+            pt: "Sexta-feira, 31 de Julho de 2026",
+            en: "Friday, July 31, 2026",
+            it: "Venerdì, 31 Luglio 2026"
+        },
+        time: "20:30 – 22:30",
+        location: "Eccetera — Via Lessolo 31",
+        description: {
+            pt: "O aperitivo que muda de forma. Três cervejas artesanais, três coquetéis à base de cerveja — e um deles você prepara. Uma experiência convivial, curiosa e surpreendente onde a cerveja encontra o mundo da coquetelaria.",
+            en: "The aperitivo that changes shape. Three craft beers, three beer-based cocktails — and one of them you make yourself. A convivial, curious and surprising experience where beer meets the world of mixology.",
+            it: "L'aperitivo che cambia forma. Venerdì 31 luglio da Eccetera torna Oltre la birra, il format guidato da Gustavo Passaia, beer sommelier e giudice internazionale. Esploreremo tre birre artigianali e tre cocktail a base di birra — e uno lo prepari tu."
+        },
+        ticketBtnLabel: {
+            pt: "Comprar Ingresso",
+            en: "Get Tickets",
+            it: "Acquista Biglietto"
+        },
+        ticketTailorUrl: "https://buytickets.at/gustavopassaia/2317604"
+    },
+
+    // ── ANTERIORES ────────────────────────────────────
+    {
+        id: "oltre-la-birra-maio-2025",
+        status: "past",
         title: {
             pt: "Além da Cerveja: Formas e Fermentações",
             en: "Beyond Beer: Forms and Fermentations",
@@ -517,15 +551,21 @@ const EVENTS_DATA = [
             en: "A slow, relaxed aperitivo with four beers and four selected Italian cheeses. Only 10 exclusive spots.",
             it: "Un aperitivo lento e rilassato con quattro birre e quattro formaggi italiani selezionati. Solo 10 posti esclusivi."
         },
-        ticketBtnLabel: {
-            pt: "Comprar Ingresso",
-            en: "Get Tickets",
-            it: "Acquista Biglietto"
+        galleryCta: {
+            pt: "Ver Fotos do Evento",
+            en: "See Event Photos",
+            it: "Vedi le Foto dell'Evento"
         },
-        ticketTailorUrl: "https://www.tickettailor.com/events/gustavopassaia/2213961"
+        gallery: [
+            "./imagens/eventos/maio-2025/foto-01.jpeg",
+            "./imagens/eventos/maio-2025/foto-02.jpeg",
+            "./imagens/eventos/maio-2025/foto-03.jpeg",
+            "./imagens/eventos/maio-2025/foto-04.jpeg",
+            "./imagens/eventos/maio-2025/foto-05.jpeg",
+            "./imagens/eventos/maio-2025/foto-06.jpeg"
+        ]
     },
 
-    // ── ANTERIORES ────────────────────────────────────
     // Campos de texto aceitam string simples (mesmo texto em todas as línguas)
     // ou objeto { pt, en, it } para conteúdo multilíngue.
     /*
@@ -622,8 +662,10 @@ function initEvents() {
 
     if (gridUpcoming) {
         if (upcoming.length === 0) {
-            gridUpcoming.style.display = 'none';
-            if (emptyUpcoming) emptyUpcoming.style.display = 'block';
+            gridUpcoming.style.display = 'grid';
+            if (emptyUpcoming) emptyUpcoming.style.display = 'none';
+            gridUpcoming.innerHTML = renderComingSoonCard(currentLang);
+            gridUpcoming.querySelectorAll('.event-card').forEach(el => el.classList.add('visible'));
         } else {
             gridUpcoming.innerHTML = upcoming.map(e => renderUpcomingCard(e, currentLang)).join('');
             gridUpcoming.querySelectorAll('.event-card').forEach(el => {
@@ -677,14 +719,27 @@ function initEvents() {
         const grid = document.getElementById('grid-upcoming');
         if (!grid) return;
         const up = EVENTS_DATA.filter(e => e.status === 'upcoming');
-        if (up.length === 0) return;
-        grid.innerHTML = up.map(e => renderUpcomingCard(e, currentLang)).join('');
+        if (up.length === 0) {
+            grid.innerHTML = renderComingSoonCard(currentLang);
+        } else {
+            grid.innerHTML = up.map(e => renderUpcomingCard(e, currentLang)).join('');
+        }
         grid.querySelectorAll('.event-card').forEach(el => el.classList.add('visible'));
     };
 
     // ── Toggle de abas ──
     const tabs   = document.querySelectorAll('.events-tab');
     const panels = document.querySelectorAll('.events-panel');
+
+    // Se não há próximos eventos, ativa aba "Edições Anteriores" por padrão
+    if (upcoming.length === 0 && past.length > 0) {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        const pastTab   = document.querySelector('.events-tab[data-tab="past"]');
+        const pastPanel = document.getElementById('panel-past');
+        if (pastTab)   pastTab.classList.add('active');
+        if (pastPanel) pastPanel.classList.add('active');
+    }
 
     tabs.forEach(tab => {
         tab.addEventListener('click', function () {
@@ -696,6 +751,38 @@ function initEvents() {
         });
     });
 
+}
+
+// =====================================================
+//  CARD "NOVO EVENTO EM BREVE"
+// =====================================================
+function renderComingSoonCard(lang) {
+    lang = lang || 'pt';
+    const labels = {
+        pt: { title: 'Novo Evento em Breve', desc: 'Estamos preparando uma nova experiência cervejeira para você. Entre no grupo do WhatsApp para ser o primeiro a saber.', btn: 'Entrar no Grupo' },
+        en: { title: 'New Event Coming Soon', desc: 'We are preparing a new beer experience for you. Join the WhatsApp group to be the first to know.', btn: 'Join the Group' },
+        it: { title: 'Nuovo Evento in Arrivo', desc: 'Stiamo preparando una nuova esperienza birraria per te. Unisciti al gruppo WhatsApp per essere il primo a saperlo.', btn: 'Unisciti al Gruppo' }
+    };
+    const t = labels[lang] || labels['pt'];
+    return `
+        <div class="event-card event-card--coming-soon fade-in">
+            <div class="event-image event-image--coming-soon">
+                <img src="./imagens/foto_capa2.jpeg" alt="Novo Evento">
+                <div class="event-coming-soon-overlay">
+                    <span class="event-coming-soon-icon">🍺</span>
+                </div>
+            </div>
+            <div class="event-content">
+                <h3 class="event-title event-title--coming-soon">${t.title}</h3>
+                <p class="event-description">${t.desc}</p>
+                <a href="https://chat.whatsapp.com/LDCYFoJlH0j4716xFqcWrv"
+                   target="_blank" rel="noopener"
+                   class="event-btn event-btn--whatsapp">
+                    💬 ${t.btn}
+                </a>
+            </div>
+        </div>
+    `;
 }
 
 // =====================================================
@@ -736,22 +823,30 @@ function renderUpcomingCard(event, lang) {
 }
 
 function renderPastCard(event) {
+    const lang       = currentLang || 'pt';
     const hasGallery = event.gallery && event.gallery.length > 0;
+    const title      = localField(event.title, lang);
+    const desc       = localField(event.description, lang);
+    const dateFull   = localField(event.dateFull, lang);
+    const closedLabel = { pt: 'Encerrado', en: 'Closed', it: 'Concluso' }[lang] || 'Encerrado';
+    const ctaLabel   = hasGallery
+        ? (localField(event.galleryCta, lang) || { pt: 'Ver Fotos do Evento', en: 'See Event Photos', it: "Vedi le Foto dell'Evento" }[lang])
+        : '';
     return `
         <div class="event-card event-card--past fade-in${hasGallery ? ' event-card--has-gallery' : ''}" style="${hasGallery ? 'cursor:pointer' : ''}">
             <div class="event-image">
-                <img src="${event.image}" alt="${event.title}">
-                <span class="event-badge-closed">Encerrado</span>
-                ${hasGallery ? `<span class="event-gallery-hint">📷 ${event.gallery.length} fotos</span>` : ''}
+                <img src="${event.image}" alt="${title}">
+                <span class="event-badge-closed">${closedLabel}</span>
+                ${hasGallery ? `<span class="event-gallery-hint">📷 ${event.gallery.length}</span>` : ''}
             </div>
             <div class="event-content">
-                <h3 class="event-title">${event.title}</h3>
+                <h3 class="event-title">${title}</h3>
                 <div class="event-meta">
                     <p class="event-location">📍 ${event.location}</p>
-                    <p class="event-time">🕐 ${event.dateFull}</p>
+                    <p class="event-time">🕐 ${dateFull}</p>
                 </div>
-                <p class="event-description">${event.description}</p>
-                ${hasGallery ? `<button class="event-btn event-btn--ghost" onclick="event.stopPropagation();lbOpen(EVENTS_DATA.find(e=>e.id==='${event.id}').gallery,0)">Ver Fotos</button>` : ''}
+                <p class="event-description">${desc}</p>
+                ${hasGallery ? `<button class="event-btn event-btn--gallery" onclick="event.stopPropagation();lbOpen(EVENTS_DATA.find(e=>e.id==='${event.id}').gallery,0)">📷 ${ctaLabel}</button>` : ''}
             </div>
         </div>
     `;
