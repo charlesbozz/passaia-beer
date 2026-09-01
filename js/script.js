@@ -562,11 +562,20 @@ const EVENTS_DATA = [
             "./imagens/eventos/julho-2026/foto-03.jpeg",
             "./imagens/eventos/julho-2026/foto-04.jpeg",
             "./imagens/eventos/julho-2026/foto-05.jpeg",
-            "./imagens/eventos/julho-2026/foto-06.jpeg"
+            "./imagens/eventos/julho-2026/foto-06.jpeg",
+            "./imagens/eventos/julho-2026/foto-07.jpeg",
+            "./imagens/eventos/julho-2026/foto-08.jpeg",
+            "./imagens/eventos/julho-2026/foto-09.jpeg",
+            "./imagens/eventos/julho-2026/foto-10.jpeg",
+            "./imagens/eventos/julho-2026/foto-11.jpeg",
+            "./imagens/eventos/julho-2026/foto-12.jpeg",
+            "./imagens/eventos/julho-2026/foto-13.jpeg",
+            "./imagens/eventos/julho-2026/foto-14.jpeg",
+            "./imagens/eventos/julho-2026/foto-15.jpeg"
         ]
     },
     {
-        id: "oltre-la-birra-maio-2025",
+        id: "oltre-la-birra-maio-2026",
         status: "past",
         title: {
             pt: "Além da Cerveja: Formas e Fermentações",
@@ -579,9 +588,9 @@ const EVENTS_DATA = [
             month: { pt: "MAI", en: "MAY", it: "MAG" }
         },
         dateFull: {
-            pt: "Sábado, 30 de Maio de 2025",
-            en: "Saturday, May 30, 2025",
-            it: "Sabato, 30 Maggio 2025"
+            pt: "Sábado, 30 de Maio de 2026",
+            en: "Saturday, May 30, 2026",
+            it: "Sabato, 30 Maggio 2026"
         },
         time: "18:00 – 20:00",
         location: "Eccetera — Via Lessolo 31",
@@ -596,12 +605,21 @@ const EVENTS_DATA = [
             it: "Vedi le Foto dell’Evento"
         },
         gallery: [
-            "./imagens/eventos/maio-2025/foto-01.jpeg",
-            "./imagens/eventos/maio-2025/foto-02.jpeg",
-            "./imagens/eventos/maio-2025/foto-03.jpeg",
-            "./imagens/eventos/maio-2025/foto-04.jpeg",
-            "./imagens/eventos/maio-2025/foto-05.jpeg",
-            "./imagens/eventos/maio-2025/foto-06.jpeg"
+            "./imagens/eventos/maio-2026/foto-01.jpeg",
+            "./imagens/eventos/maio-2026/foto-02.jpeg",
+            "./imagens/eventos/maio-2026/foto-03.jpeg",
+            "./imagens/eventos/maio-2026/foto-04.jpeg",
+            "./imagens/eventos/maio-2026/foto-05.jpeg",
+            "./imagens/eventos/maio-2026/foto-06.jpeg",
+            "./imagens/eventos/maio-2026/foto-07.jpeg",
+            "./imagens/eventos/maio-2026/foto-08.jpeg",
+            "./imagens/eventos/maio-2026/foto-09.jpeg",
+            "./imagens/eventos/maio-2026/foto-10.jpeg",
+            "./imagens/eventos/maio-2026/foto-11.jpeg",
+            "./imagens/eventos/maio-2026/foto-12.jpeg",
+            "./imagens/eventos/maio-2026/foto-13.jpeg",
+            "./imagens/eventos/maio-2026/foto-14.jpeg",
+            "./imagens/eventos/maio-2026/foto-15.jpeg"
         ]
     },
 
