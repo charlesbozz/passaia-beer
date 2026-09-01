@@ -493,8 +493,81 @@ const EVENTS_DATA = [
 
     // ── PRÓXIMOS ──────────────────────────────────────
     {
-        id: "oltre-la-birra-maio-2025",
+        id: "fresche-ribelli-setembro-2026",
         status: "upcoming",
+        title: {
+            pt: "Além da Cerveja: Frescas & Rebeldes — Chega de Pils e IPA",
+            en: "Beyond Beer: Fresh & Rebel — No More Pils and IPA",
+            it: "Oltre la Birra: Fresche & Ribelli — Basta Pils e IPA"
+        },
+        image: "./imagens/event-card/evento3.jpeg",
+        date: {
+            day: "12",
+            month: { pt: "SET", en: "SEP", it: "SET" }
+        },
+        dateFull: {
+            pt: "Sábado, 12 de Setembro de 2026",
+            en: "Saturday, September 12, 2026",
+            it: "Sabato, 12 Settembre 2026"
+        },
+        time: "19:00 – 21:00",
+        location: "Eccetera — Via Lessolo 31",
+        description: {
+            pt: "Deixe-se levar numa viagem leve e surpreendente, onde a cerveja deixa de lado as suas formas mais previsíveis. Exploraremos cervejas pensadas para contar um lado da cerveja artesanal que vai além das Pils e IPAs — perfeito para quem quer descobrir algo diferente, sentado à mesa, numa quente noite de verão.",
+            en: "Let yourself be carried on a light and surprising journey, where beer sets aside its most predictable forms. We will explore beers crafted to tell a side of craft beer that goes beyond Pils and IPAs — perfect for those who want to discover something different, seated around a table on a warm summer evening.",
+            it: "Lasciati trasportare in un viaggio leggero e sorprendente, dove la birra lascia da parte le sue forme più scontate. Esploreremo birre pensate per raccontare un lato della birra artigianale che va oltre pils e IPA — perfetto per chi vuole scoprire qualcosa di diverso, seduto attorno a un tavolo, in una calda serata d’estate."
+        },
+        ticketBtnLabel: {
+            pt: "Comprar Ingresso",
+            en: "Get Tickets",
+            it: "Acquista Biglietto"
+        },
+        ticketTailorUrl: "https://www.tickettailor.com/events/gustavopassaia/2389906"
+    },
+
+    // ── ANTERIORES ────────────────────────────────────
+    {
+        id: "oltre-la-birra-luglio-2026",
+        status: "past",
+        title: {
+            pt: "Além da Cerveja: Cerveja & Coquetel — Do Copo ao Shaker",
+            en: "Beyond Beer: Beer & Cocktail — From Glass to Shaker",
+            it: "Oltre la Birra: Birra & Cocktail — Dal Bicchiere allo Shaker"
+        },
+        image: "./imagens/event-card/evento2.jpeg",
+        date: {
+            day: "31",
+            month: { pt: "JUL", en: "JUL", it: "LUG" }
+        },
+        dateFull: {
+            pt: "Sexta-feira, 31 de Julho de 2026",
+            en: "Friday, July 31, 2026",
+            it: "Venerdì, 31 Luglio 2026"
+        },
+        time: "20:30 – 22:30",
+        location: "Eccetera — Via Lessolo 31",
+        description: {
+            pt: "O aperitivo que muda de forma. Três cervejas artesanais, três coquetéis à base de cerveja — e um deles você prepara. Uma experiência convivial, curiosa e surpreendente onde a cerveja encontra o mundo da coquetelaria.",
+            en: "The aperitivo that changes shape. Three craft beers, three beer-based cocktails — and one of them you make yourself. A convivial, curious and surprising experience where beer meets the world of mixology.",
+            it: "L’aperitivo che cambia forma. Venerdì 31 luglio da Eccetera torna Oltre la birra, il format guidato da Gustavo Passaia, beer sommelier e giudice internazionale. Esploreremo tre birre artigianali e tre cocktail a base di birra — e uno lo prepari tu."
+        },
+        galleryCta: {
+            pt: "Ver Fotos do Evento",
+            en: "See Event Photos",
+            it: "Vedi le Foto dell’Evento"
+        },
+        gallery: [
+            "./imagens/eventos/julho-2026/foto-01.jpeg",
+            "./imagens/eventos/julho-2026/foto-02.jpeg",
+            "./imagens/eventos/julho-2026/foto-03.jpeg",
+            "./imagens/eventos/julho-2026/foto-04.jpeg",
+            "./imagens/eventos/julho-2026/foto-05.jpeg",
+            "./imagens/eventos/julho-2026/foto-06.jpeg"
+        ]
+    },
+    {
+        id: "oltre-la-birra-maio-2025",
+        status: "past",
         title: {
             pt: "Além da Cerveja: Formas e Fermentações",
             en: "Beyond Beer: Forms and Fermentations",
@@ -517,47 +590,20 @@ const EVENTS_DATA = [
             en: "A slow, relaxed aperitivo with four beers and four selected Italian cheeses. Only 10 exclusive spots.",
             it: "Un aperitivo lento e rilassato con quattro birre e quattro formaggi italiani selezionati. Solo 10 posti esclusivi."
         },
-        ticketBtnLabel: {
-            pt: "Comprar Ingresso",
-            en: "Get Tickets",
-            it: "Acquista Biglietto"
-        },
-        ticketTailorUrl: "https://www.tickettailor.com/events/gustavopassaia/2213961"
-    },
-
-    // ── ANTERIORES ────────────────────────────────────
-    // Campos de texto aceitam string simples (mesmo texto em todas as línguas)
-    // ou objeto { pt, en, it } para conteúdo multilíngue.
-    /*
-    {
-        id: "harmonizacao-outono-2024",
-        status: "past",
-        title: {
-            pt: "Harmonização de Outono",
-            en: "Autumn Pairing",
-            it: "Abbinamento d'Autunno"
-        },
-        image: "./imagens/eventos/evento1.jpeg",
-        date: { day: "10", month: { pt: "OUT", en: "OCT", it: "OTT" } },
-        dateFull: {
-            pt: "10 de Outubro de 2024",
-            en: "October 10, 2024",
-            it: "10 Ottobre 2024"
-        },
-        time: "19:00 – 22:00",
-        location: "Porto Alegre, RS",
-        description: {
-            pt: "Uma noite dedicada à arte de harmonizar cervejas artesanais com pratos da gastronomia brasileira.",
-            en: "An evening dedicated to the art of pairing craft beers with Brazilian gastronomy.",
-            it: "Una serata dedicata all'arte di abbinare birre artigianali alla gastronomia brasiliana."
+        galleryCta: {
+            pt: "Ver Fotos do Evento",
+            en: "See Event Photos",
+            it: "Vedi le Foto dell’Evento"
         },
         gallery: [
-            "https://i.imgur.com/FOTO1.jpg",
-            "https://i.imgur.com/FOTO2.jpg",
-            "https://i.imgur.com/FOTO3.jpg"
+            "./imagens/eventos/maio-2025/foto-01.jpeg",
+            "./imagens/eventos/maio-2025/foto-02.jpeg",
+            "./imagens/eventos/maio-2025/foto-03.jpeg",
+            "./imagens/eventos/maio-2025/foto-04.jpeg",
+            "./imagens/eventos/maio-2025/foto-05.jpeg",
+            "./imagens/eventos/maio-2025/foto-06.jpeg"
         ]
     },
-    */
 
 ];
 
