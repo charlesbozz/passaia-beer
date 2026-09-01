@@ -557,21 +557,21 @@ const EVENTS_DATA = [
             it: "Vedi le Foto dell’Evento"
         },
         gallery: [
-            "./imagens/eventos/julho-2026/foto-01.jpeg",
-            "./imagens/eventos/julho-2026/foto-02.jpeg",
-            "./imagens/eventos/julho-2026/foto-03.jpeg",
-            "./imagens/eventos/julho-2026/foto-04.jpeg",
-            "./imagens/eventos/julho-2026/foto-05.jpeg",
-            "./imagens/eventos/julho-2026/foto-06.jpeg",
-            "./imagens/eventos/julho-2026/foto-07.jpeg",
-            "./imagens/eventos/julho-2026/foto-08.jpeg",
-            "./imagens/eventos/julho-2026/foto-09.jpeg",
-            "./imagens/eventos/julho-2026/foto-10.jpeg",
-            "./imagens/eventos/julho-2026/foto-11.jpeg",
-            "./imagens/eventos/julho-2026/foto-12.jpeg",
-            "./imagens/eventos/julho-2026/foto-13.jpeg",
-            "./imagens/eventos/julho-2026/foto-14.jpeg",
-            "./imagens/eventos/julho-2026/foto-15.jpeg"
+            "./imagens/eventos/julho-2026/julho-1.jpg",
+            "./imagens/eventos/julho-2026/julho-2.jpg",
+            "./imagens/eventos/julho-2026/julho-3.jpg",
+            "./imagens/eventos/julho-2026/julho-4.jpg",
+            "./imagens/eventos/julho-2026/julho-5.jpg",
+            "./imagens/eventos/julho-2026/julho-6.jpg",
+            "./imagens/eventos/julho-2026/julho-7.jpg",
+            "./imagens/eventos/julho-2026/julho-8.jpg",
+            "./imagens/eventos/julho-2026/julho-9.jpg",
+            "./imagens/eventos/julho-2026/julho-10.jpg",
+            "./imagens/eventos/julho-2026/julho-11.jpg",
+            "./imagens/eventos/julho-2026/julho-12.jpg",
+            "./imagens/eventos/julho-2026/julho-13.jpg",
+            "./imagens/eventos/julho-2026/julho-14.jpg",
+            "./imagens/eventos/julho-2026/julho-15.jpg"
         ]
     },
     {
@@ -605,21 +605,21 @@ const EVENTS_DATA = [
             it: "Vedi le Foto dell’Evento"
         },
         gallery: [
-            "./imagens/eventos/maio-2026/foto-01.jpeg",
-            "./imagens/eventos/maio-2026/foto-02.jpeg",
-            "./imagens/eventos/maio-2026/foto-03.jpeg",
-            "./imagens/eventos/maio-2026/foto-04.jpeg",
-            "./imagens/eventos/maio-2026/foto-05.jpeg",
-            "./imagens/eventos/maio-2026/foto-06.jpeg",
-            "./imagens/eventos/maio-2026/foto-07.jpeg",
-            "./imagens/eventos/maio-2026/foto-08.jpeg",
-            "./imagens/eventos/maio-2026/foto-09.jpeg",
-            "./imagens/eventos/maio-2026/foto-10.jpeg",
-            "./imagens/eventos/maio-2026/foto-11.jpeg",
-            "./imagens/eventos/maio-2026/foto-12.jpeg",
-            "./imagens/eventos/maio-2026/foto-13.jpeg",
-            "./imagens/eventos/maio-2026/foto-14.jpeg",
-            "./imagens/eventos/maio-2026/foto-15.jpeg"
+            "./imagens/eventos/maio-2026/maio-1.jpg",
+            "./imagens/eventos/maio-2026/maio-2.jpg",
+            "./imagens/eventos/maio-2026/maio-3.jpg",
+            "./imagens/eventos/maio-2026/maio-4.jpg",
+            "./imagens/eventos/maio-2026/maio-5.jpg",
+            "./imagens/eventos/maio-2026/maio-6.jpg",
+            "./imagens/eventos/maio-2026/maio-7.jpg",
+            "./imagens/eventos/maio-2026/maio-8.jpg",
+            "./imagens/eventos/maio-2026/maio-9.jpg",
+            "./imagens/eventos/maio-2026/maio-10.jpg",
+            "./imagens/eventos/maio-2026/maio-11.jpg",
+            "./imagens/eventos/maio-2026/maio-12.jpg",
+            "./imagens/eventos/maio-2026/maio-13.jpg",
+            "./imagens/eventos/maio-2026/maio-14.jpg",
+            "./imagens/eventos/maio-2026/maio-15.jpg"
         ]
     },
 
