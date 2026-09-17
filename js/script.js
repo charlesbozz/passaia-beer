@@ -493,8 +493,45 @@ const EVENTS_DATA = [
 
     // ── PRÓXIMOS ──────────────────────────────────────
     {
-        id: "fresche-ribelli-setembro-2026",
+        id: "oltre-la-birra-ottobre-2026",
         status: "upcoming",
+        title: {
+            pt: "Além da Cerveja: Degustação Guiada de Cervejas",
+            en: "Beyond Beer: Guided Beer Tasting",
+            it: "Oltre la Birra: degustazione guidata di birre"
+        },
+        image: "./imagens/event-card/evento4.jpg",
+        imageZoom: 1.25,              // leve aproximação (1 = sem zoom)
+        imageObjectPos: "center 32%", // enquadra as taças inteiras (sobe/desce a faixa)
+        imageBrightness: 1.15,        // clareia a foto (default dos cards = 0.8)
+        date: {
+            day: "10",
+            month: { pt: "OUT", en: "OCT", it: "OTT" }
+        },
+        dateFull: {
+            pt: "Sábado, 10 de Outubro de 2026",
+            en: "Saturday, October 10, 2026",
+            it: "Sabato, 10 Ottobre 2026"
+        },
+        time: "19:30 – 21:00",
+        location: "Eccetera — Via Lessolo 31",
+        description: {
+            pt: "Volta o Oltre la Birra, a noite de degustação guiada para quem quer descobrir a cerveja artesanal para além dos estilos mais óbvios. Detalhes sobre a seleção em breve — enquanto isso, já marca a data na agenda.",
+            en: "Oltre la Birra is back — the guided tasting night for anyone who wants to discover craft beer beyond the most obvious styles. Details about the selection coming soon — in the meantime, save the date.",
+            it: "Torna Oltre la Birra, la serata di degustazione guidata per chi vuole scoprire la birra artigianale oltre gli stili più scontati. Dettagli sulla selezione in arrivo — nel frattempo, segna la data in calendario."
+        },
+        ticketBtnLabel: {
+            pt: "Comprar Ingresso",
+            en: "Get Tickets",
+            it: "Acquista Biglietto"
+        },
+        ticketTailorUrl: "https://www.tickettailor.com/events/gustavopassaia/2417388"
+    },
+
+    // ── ANTERIORES ────────────────────────────────────
+    {
+        id: "fresche-ribelli-setembro-2026",
+        status: "past",
         title: {
             pt: "Além da Cerveja: Frescas & Rebeldes — Chega de Pils e IPA",
             en: "Beyond Beer: Fresh & Rebel — No More Pils and IPA",
@@ -517,15 +554,26 @@ const EVENTS_DATA = [
             en: "Let yourself be carried on a light and surprising journey, where beer sets aside its most predictable forms. We will explore beers crafted to tell a side of craft beer that goes beyond Pils and IPAs — perfect for those who want to discover something different, seated around a table on a warm summer evening.",
             it: "Lasciati trasportare in un viaggio leggero e sorprendente, dove la birra lascia da parte le sue forme più scontate. Esploreremo birre pensate per raccontare un lato della birra artigianale che va oltre pils e IPA — perfetto per chi vuole scoprire qualcosa di diverso, seduto attorno a un tavolo, in una calda serata d’estate."
         },
-        ticketBtnLabel: {
-            pt: "Comprar Ingresso",
-            en: "Get Tickets",
-            it: "Acquista Biglietto"
+        galleryCta: {
+            pt: "Ver Fotos do Evento",
+            en: "See Event Photos",
+            it: "Vedi le Foto dell’Evento"
         },
-        ticketTailorUrl: "https://www.tickettailor.com/events/gustavopassaia/2389906"
+        gallery: [
+            "./imagens/eventos/setembro-2026/setembro-1.jpg",
+            "./imagens/eventos/setembro-2026/setembro-2.jpg",
+            "./imagens/eventos/setembro-2026/setembro-3.jpg",
+            "./imagens/eventos/setembro-2026/setembro-4.jpg",
+            "./imagens/eventos/setembro-2026/setembro-5.jpg",
+            "./imagens/eventos/setembro-2026/setembro-6.jpg",
+            "./imagens/eventos/setembro-2026/setembro-7.jpg",
+            "./imagens/eventos/setembro-2026/setembro-8.jpg",
+            "./imagens/eventos/setembro-2026/setembro-9.jpg",
+            "./imagens/eventos/setembro-2026/setembro-10.jpg",
+            "./imagens/eventos/setembro-2026/setembro-11.jpg",
+            "./imagens/eventos/setembro-2026/setembro-12.jpg"
+        ]
     },
-
-    // ── ANTERIORES ────────────────────────────────────
     {
         id: "oltre-la-birra-luglio-2026",
         status: "past",
@@ -629,6 +677,9 @@ const EVENTS_DATA = [
 //  CONFIGURAÇÃO
 // =====================================================
 const PAST_PAGE_SIZE = 6;
+// Quantas fotos exibir no lightbox (sorteadas do pool de cada evento).
+// Se o evento tiver MENOS fotos que isso, mostra todas.
+const GALLERY_SAMPLE_SIZE = 10;
 
 // =====================================================
 //  LIGHTBOX (eventos passados)
@@ -670,7 +721,36 @@ document.addEventListener('keydown', function(e) {
 // =====================================================
 //  RENDERIZAÇÃO DE EVENTS
 // =====================================================
+// =====================================================
+//  SORTEIO DE GALERIA (subconjunto aleatório por carregamento)
+// =====================================================
+// Escolhe `n` fotos aleatórias do pool. Mantém a ordem original das
+// escolhidas (sequência das fotos preservada). Se o pool tiver <= n, usa todas.
+function _sampleGallery(pool, n) {
+    if (!Array.isArray(pool) || pool.length === 0) return [];
+    if (pool.length <= n) return pool.slice();
+    const idx = pool.map((_, i) => i);
+    for (let i = idx.length - 1; i > 0; i--) {          // Fisher-Yates
+        const j = Math.floor(Math.random() * (i + 1));
+        [idx[i], idx[j]] = [idx[j], idx[i]];
+    }
+    return idx.slice(0, n).sort((a, b) => a - b).map(i => pool[i]);
+}
+
 function initEvents() {
+
+    // Sorteia UMA vez por carregamento um subconjunto da galeria de cada
+    // evento passado. Guarda o pool completo em `galleryPool` e coloca as
+    // sorteadas em `gallery` — assim contador, botão e lightbox usam as
+    // sorteadas automaticamente. O guard `!ev.galleryPool` torna idempotente
+    // (não re-sorteia se initEvents rodar de novo na mesma sessão).
+    EVENTS_DATA.forEach(ev => {
+        if (ev.status === 'past' && !ev.galleryPool &&
+            Array.isArray(ev.gallery) && ev.gallery.length) {
+            ev.galleryPool = ev.gallery;
+            ev.gallery = _sampleGallery(ev.galleryPool, GALLERY_SAMPLE_SIZE);
+        }
+    });
 
     const upcoming = EVENTS_DATA.filter(e => e.status === 'upcoming');
     const past     = EVENTS_DATA.filter(e => e.status === 'past');
@@ -783,6 +863,22 @@ function initEvents() {
 // =====================================================
 //  TEMPLATES
 // =====================================================
+// Monta o style do <img> do card a partir de campos opcionais do evento:
+//   imageZoom   -> nível de zoom (ex.: 1.5). Sem ele, sem zoom.
+//   imageOrigin -> para onde o zoom "puxa" (ex.: "center 75%"). Default: centro.
+//   imageObjectPos -> enquadra a faixa vertical SEM deixar vão (ex.: "center 42%"). Recomendado p/ fotos altas.
+//   imageShiftY  -> desliza na vertical (ex.: "-8%"). Negativo = cima. (Pode deixar vão; prefira imageObjectPos.)
+//   imageBrightness -> clareia/escurece a foto do card (ex.: 1.15). Default 0.8.
+function _cardImgStyle(event) {
+    const parts = [];
+    if (event.imageZoom)   parts.push(`--card-img-zoom:${event.imageZoom}`);
+    if (event.imageOrigin) parts.push(`--card-img-origin:${event.imageOrigin}`);
+    if (event.imageObjectPos) parts.push(`--card-img-pos:${event.imageObjectPos}`);
+    if (event.imageShiftY)    parts.push(`--card-img-shift:${event.imageShiftY}`);
+    if (event.imageBrightness) parts.push(`--card-img-bright:${event.imageBrightness}`);
+    return parts.length ? ` style="${parts.join(';')}"` : '';
+}
+
 function renderUpcomingCard(event, lang) {
     lang = lang || currentLang || 'pt';
     const title   = localField(event.title, lang);
@@ -792,7 +888,7 @@ function renderUpcomingCard(event, lang) {
     return `
         <div class="event-card fade-in" onclick="window.open('${event.ticketTailorUrl}','_blank','noopener')" style="cursor:pointer">
             <div class="event-image">
-                <img src="${event.image}" alt="${title}">
+                <img src="${event.image}" alt="${title}"${_cardImgStyle(event)}>
                 <div class="event-date-badge">
                     <span class="day">${event.date.day}</span>
                     <span class="month">${month}</span>
@@ -830,7 +926,7 @@ function renderPastCard(event) {
     return `
         <div class="event-card event-card--past fade-in${hasGallery ? ' event-card--has-gallery' : ''}" style="${hasGallery ? 'cursor:pointer' : ''}">
             <div class="event-image">
-                <img src="${event.image}" alt="${title}">
+                <img src="${event.image}" alt="${title}"${_cardImgStyle(event)}>
                 <span class="event-badge-closed">${closedLabel}</span>
                 ${hasGallery ? `<span class="event-gallery-hint">📷 ${event.gallery.length} fotos</span>` : ''}
             </div>

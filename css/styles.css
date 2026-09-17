@@ -773,14 +773,19 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: var(--card-img-pos, top center);
+    /* Zoom opcional por card (default 1 = sem zoom). Definido por --card-img-zoom
+       no <img> via JS. transform-origin controla PARA ONDE o zoom puxa. */
+    /* translateY empurra a imagem na vertical (negativo = para cima). */
+    transform: translateY(var(--card-img-shift, 0)) scale(var(--card-img-zoom, 1));
+    transform-origin: var(--card-img-origin, center center);
     transition: transform 0.5s ease;
-    filter: brightness(0.8);
+    filter: brightness(var(--card-img-bright, 0.8));
 }
 
 .event-card:hover .event-image img {
-    transform: scale(1.1);
-    filter: brightness(1);
+    transform: translateY(var(--card-img-shift, 0)) scale(calc(var(--card-img-zoom, 1) * 1.1));
+    filter: brightness(calc(var(--card-img-bright, 0.8) + 0.2));
 }
 
 .event-image::before {
@@ -1517,7 +1522,7 @@ body {
 
 .event-card--past:hover .event-image img {
     filter: brightness(0.75) saturate(0.4);
-    transform: scale(1.05);
+    transform: translateY(var(--card-img-shift, 0)) scale(calc(var(--card-img-zoom, 1) * 1.05));
 }
 
 /* Badge "Encerrado" para eventos passados */
