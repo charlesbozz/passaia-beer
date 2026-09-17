@@ -320,8 +320,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Carrega idioma salvo (padrão: pt)
-    const savedLang = localStorage.getItem('preferredLanguage') || 'pt';
+    // Idioma inicial: preferência salva > idioma do navegador > inglês.
+    // pt -> PT, it -> IT, qualquer outro idioma -> EN.
+    const savedLang = (function () {
+        const saved = localStorage.getItem('preferredLanguage');
+        if (saved && ['pt', 'en', 'it'].includes(saved)) return saved;
+        const nav = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+        const code = nav.toLowerCase().slice(0, 2);
+        if (code === 'pt') return 'pt';
+        if (code === 'it') return 'it';
+        return 'en';
+    })();
     langBtns.forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === savedLang);
     });
@@ -501,8 +510,8 @@ const EVENTS_DATA = [
             it: "Oltre la Birra: degustazione guidata di birre"
         },
         image: "./imagens/event-card/evento4.jpg",
-        imageZoom: 1.25,              // leve aproximação (1 = sem zoom)
-        imageObjectPos: "center 32%", // enquadra as taças inteiras (sobe/desce a faixa)
+        imageZoom: 1.15,              // leve aproximação (1 = sem zoom)
+        imageObjectPos: "center 42%", // enquadra as taças inteiras (sobe/desce a faixa)
         imageBrightness: 1.15,        // clareia a foto (default dos cards = 0.8)
         date: {
             day: "10",
