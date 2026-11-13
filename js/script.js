@@ -502,8 +502,44 @@ const EVENTS_DATA = [
 
     // ── PRÓXIMOS ──────────────────────────────────────
     {
-        id: "oltre-la-birra-ottobre-2026",
+        id: "le-birre-di-natale-novembro-2026",
         status: "upcoming",
+        title: {
+            pt: "Além da Cerveja: As Cervejas de Natal",
+            en: "Beyond Beer: Christmas Beers",
+            it: "Oltre la Birra: Le birre di Natale"
+        },
+        image: "./imagens/event-card/evento5.jpg",
+        imageZoom: 1.3,               // aproxima na mesa/sommelier (1 = sem zoom)
+        imageObjectPos: "center 38%", // enquadra a mesa cheia sem deixar vão
+        imageBrightness: 1.15,        // clareia a foto (default dos cards = 0.8)
+        date: {
+            day: "12",
+            month: { pt: "NOV", en: "NOV", it: "NOV" }
+        },
+        dateFull: {
+            pt: "Quinta-feira, 12 de Novembro de 2026",
+            en: "Thursday, November 12, 2026",
+            it: "Giovedì, 12 Novembre 2026"
+        },
+        time: "20:30 – 22:00",
+        location: "Eccetera — Via Lessolo 31",
+        description: {
+            pt: "No Natal, quase sempre se brinda com a mesma garrafa. Nós abrimos outras. Esta degustação guiada explora as cervejas pensadas para as festas, entre especiarias, maltes torrados, frutas secas e notas de caramelo, para descobrir como o Natal pode entrar no copo de formas que você não espera.",
+            en: "At Christmas we almost always toast with the same bottle. We open others. This guided tasting explores beers crafted for the holidays — amid spices, toasted malts, dried fruit and caramel notes — to discover how Christmas can land in your glass in ways you wouldn't expect.",
+            it: "A Natale si brinda quasi sempre con la stessa bottiglia. Noi ne apriamo altre. Questa degustazione guidata esplora le birre pensate per le feste, tra spezie, malti tostati, frutta secca e note di caramello, per scoprire come il Natale può entrare nel bicchiere in modi che non ti aspetti."
+        },
+        ticketBtnLabel: {
+            pt: "Comprar Ingresso",
+            en: "Get Tickets",
+            it: "Acquista Biglietto"
+        },
+        ticketTailorUrl: "https://www.tickettailor.com/events/gustavopassaia/2417441"
+    },
+
+    {
+        id: "oltre-la-birra-ottobre-2026",
+        status: "past",
         title: {
             pt: "Além da Cerveja: Degustação Guiada de Cervejas",
             en: "Beyond Beer: Guided Beer Tasting",
@@ -529,12 +565,13 @@ const EVENTS_DATA = [
             en: "Oltre la Birra is back — the guided tasting night for anyone who wants to discover craft beer beyond the most obvious styles. Details about the selection coming soon — in the meantime, save the date.",
             it: "Torna Oltre la Birra, la serata di degustazione guidata per chi vuole scoprire la birra artigianale oltre gli stili più scontati. Dettagli sulla selezione in arrivo — nel frattempo, segna la data in calendario."
         },
-        ticketBtnLabel: {
-            pt: "Comprar Ingresso",
-            en: "Get Tickets",
-            it: "Acquista Biglietto"
+        galleryCta: {
+            pt: "Ver Fotos do Evento",
+            en: "See Event Photos",
+            it: "Vedi le Foto dell\u2019Evento"
         },
-        ticketTailorUrl: "https://www.tickettailor.com/events/gustavopassaia/2417388"
+        // TODO: adicionar fotos do evento de outubro (ex.: "./imagens/eventos/outubro-2026/outubro-1.jpg", ...)
+        gallery: []
     },
 
     // ── ANTERIORES ────────────────────────────────────
